@@ -31,13 +31,14 @@
   var nav = document.getElementById("nav");
   var links = Array.prototype.slice.call(document.querySelectorAll("nav.links a"));
   var sections = links.map(function(a){ return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  var topSection = document.getElementById("top");
 
   function onScroll(){
     nav.classList.toggle("scrolled", window.scrollY > 24);
 
     // active section
     var pos = window.scrollY + window.innerHeight*0.32;
-    var current = sections[0];
+    var current = topSection;
     sections.forEach(function(s){ if(s.offsetTop <= pos) current = s; });
     links.forEach(function(a){
       a.classList.toggle("active", a.getAttribute("href") === "#"+ (current && current.id));
