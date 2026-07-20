@@ -242,6 +242,8 @@ nav.links a.active::after{width:100%}
 .work-item .meta p{color:var(--text-dim);font-size:.88rem;margin-top:.3rem;max-width:60ch}
 .work-item .tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);
   border:1px solid var(--hairline);border-radius:100px;padding:5px 13px;white-space:nowrap}
+.work-item .tag-link{transition:border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.work-item .tag-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 
 /* ---------- AI Glasses gallery ---------- */
 .glass-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,32px);margin-top:2.8rem;counter-reset:glass}
@@ -279,6 +281,8 @@ nav.links a.active::after{width:100%}
 .pub:hover{transform:translateY(-3px)}
 .pub .type{font-family:"Fraunces",serif;font-style:italic;color:var(--accent-2);font-size:.82rem}
 .pub h3{font-family:"Noto Serif KR",serif;font-weight:400;font-size:1.05rem;margin:.55rem 0 .4rem;line-height:1.4}
+.pub h3 a{transition:color .3s var(--ease)}
+.pub h3 a:hover{color:var(--accent);text-decoration:underline}
 .pub p{color:var(--text-dim);font-size:.86rem}
 
 /* ---------- Contact ---------- */
