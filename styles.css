@@ -133,7 +133,7 @@ nav.links a.active::after{width:100%}
   font-size:clamp(2.4rem,6.4vw,4.4rem);line-height:1.05;letter-spacing:-.01em;
   margin:.55rem 0 .2rem;
 }
-.hero-copy h1 .en{display:block;font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+.hero-copy h1 .en{display:block;font-family:"Fraunces",serif;font-style:italic;font-weight:300;
   font-size:clamp(1rem,2.4vw,1.5rem);color:var(--text-dim);letter-spacing:.04em;margin-top:.6rem}
 .role{color:var(--text-dim);font-size:1rem;margin-top:1.4rem;max-width:34ch}
 .motto{
@@ -238,11 +238,19 @@ nav.links a.active::after{width:100%}
 .work-item:hover{padding-left:20px}
 .work-item:hover::before{transform:scaleY(1)}
 .work-item .idx{font-family:"Fraunces",serif;font-style:italic;color:var(--accent);font-size:.9rem}
-.work-item .meta h3{font-family:"Noto Serif KR",serif;font-weight:400;font-size:1.15rem;letter-spacing:-.01em}
+.work-item .meta h3,.work-item .meta h4{font-family:"Noto Serif KR",serif;font-weight:400;font-size:1.15rem;letter-spacing:-.01em}
 .work-item .meta p{color:var(--text-dim);font-size:.88rem;margin-top:.3rem;max-width:60ch}
 .work-item .tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);
   border:1px solid var(--hairline);border-radius:100px;padding:5px 13px;white-space:nowrap}
 .work-item .tag-link{transition:border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.work-item button.tag-link{background:none;font-family:inherit;cursor:pointer;-webkit-appearance:none;appearance:none}
+.meta-thumb{
+  display:block;margin-top:.8rem;width:84px;padding:0;border-radius:6px;overflow:hidden;
+  border:1px solid var(--hairline);background:none;cursor:pointer;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+}
+.meta-thumb img{display:block;width:100%;height:auto}
+.meta-thumb:hover{border-color:var(--accent);transform:translateY(-2px)}
 .work-item .tag-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 
 /* ---------- AI Glasses gallery ---------- */
@@ -308,6 +316,69 @@ footer .compass-line{font-family:"Fraunces",serif;font-style:italic;color:var(--
   .reveal{opacity:1;transform:none;transition:none}
   #needle{animation:none}
   .compass{animation:none!important}
+}
+
+/* ---------- PDF book viewer modal ---------- */
+.pdf-modal{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;
+  padding:clamp(16px,4vw,48px);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s var(--ease),visibility 0s linear .35s;
+}
+.pdf-modal.open{opacity:1;visibility:visible;transition:opacity .35s var(--ease)}
+.pdf-modal-backdrop{
+  position:absolute;inset:0;
+  background:color-mix(in srgb,var(--ink) 82%,transparent);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.pdf-modal-panel{
+  position:relative;width:min(880px,100%);height:min(88vh,1080px);
+  display:flex;flex-direction:column;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:8px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  transform:translateY(18px) scale(.98);opacity:0;
+  transition:transform .4s var(--ease),opacity .4s var(--ease);
+  overflow:hidden;
+}
+.pdf-modal.open .pdf-modal-panel{transform:none;opacity:1}
+.pdf-modal-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 18px;border-bottom:1px solid var(--hairline);
+  background:var(--surface-2);
+}
+.pdf-modal-title{
+  font-family:"Noto Serif KR",serif;font-size:.98rem;letter-spacing:-.01em;
+  color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.pdf-modal-actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+.pdf-modal-link{
+  font-size:.8rem;color:var(--text-dim);white-space:nowrap;
+  transition:color .3s var(--ease);
+}
+.pdf-modal-link:hover{color:var(--accent)}
+.pdf-modal-close{
+  background:none;border:1px solid var(--hairline);color:var(--text);
+  width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:.85rem;
+  display:grid;place-items:center;transition:border-color .3s,color .3s,transform .3s var(--ease);
+}
+.pdf-modal-close:hover{border-color:var(--accent);color:var(--accent);transform:rotate(90deg)}
+.pdf-modal-book{
+  flex:1;position:relative;
+  background:
+    radial-gradient(120% 100% at 50% 0,color-mix(in srgb,var(--navy) 45%,transparent),transparent 60%),
+    var(--ink);
+}
+.pdf-modal-book iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:0;
+  background:#3a3a3a;
+}
+.pdf-modal-book img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+}
+body.pdf-modal-active{overflow:hidden}
+@media (max-width:640px){
+  .pdf-modal-panel{height:92vh;border-radius:4px}
+  .pdf-modal-title{font-size:.86rem}
 }
 
 /* ---------- Responsive ---------- */

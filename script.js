@@ -91,4 +91,49 @@
       io.observe(el);
     });
   }
+
+  /* ----- PDF book viewer modal ----- */
+  var pdfModal = document.getElementById("pdfModal");
+  var pdfFrame = document.getElementById("pdfModalFrame");
+  var pdfImg = document.getElementById("pdfModalImg");
+  var pdfTitle = document.getElementById("pdfModalTitle");
+  var pdfOpenNew = document.getElementById("pdfModalOpenNew");
+  var pdfLastFocus = null;
+  var imageExt = /\.(png|jpe?g|gif|webp|svg)$/i;
+
+  function openPdfModal(src, title){
+    pdfLastFocus = document.activeElement;
+    if(imageExt.test(src)){
+      pdfFrame.hidden = true; pdfFrame.src = "";
+      pdfImg.hidden = false; pdfImg.src = src; pdfImg.alt = title || "";
+    } else {
+      pdfImg.hidden = true; pdfImg.src = "";
+      pdfFrame.hidden = false; pdfFrame.src = src;
+    }
+    pdfOpenNew.href = src;
+    pdfTitle.textContent = title || "";
+    pdfModal.classList.add("open");
+    pdfModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("pdf-modal-active");
+  }
+  function closePdfModal(){
+    pdfModal.classList.remove("open");
+    pdfModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("pdf-modal-active");
+    pdfFrame.src = "";
+    pdfImg.src = "";
+    if(pdfLastFocus){ pdfLastFocus.focus(); }
+  }
+
+  document.querySelectorAll("[data-pdf-open]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      openPdfModal(btn.getAttribute("data-pdf-open"), btn.getAttribute("data-pdf-title"));
+    });
+  });
+  document.querySelectorAll("[data-pdf-close]").forEach(function(el){
+    el.addEventListener("click", closePdfModal);
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && pdfModal.classList.contains("open")){ closePdfModal(); }
+  });
 })();
