@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="소상공인이 업종·목적·형식·스타일을 선택해 Adobe Express 템플릿 검색 키워드를 만드는 인터랙티브 가이드">
+  <title>소상공인 업종별 템플릿 검색 키워드 가이드 2026</title>
+  <style>
+    :root {
+      --ink:#191622; --muted:#696576; --line:#dedbea; --paper:#fff;
+      --soft:#f7f5fb; --purple:#5b3fd6; --purple-dark:#3f317d;
+      --purple-soft:#eee9ff; --magenta:#e8427a; --green:#16825d;
+      --shadow:0 22px 70px rgba(53,41,104,.13);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; background:var(--paper); color:var(--ink);
+      font-family:Arial,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+      line-height:1.6;
+    }
+    button,input,select { font:inherit; }
+    button,a,select { -webkit-tap-highlight-color:transparent; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; }
+    .skip-link { position:absolute; left:-9999px; }
+    .skip-link:focus { left:16px; top:16px; z-index:100; padding:10px 14px; background:#fff; border:2px solid var(--purple); }
+    .topbar {
+      position:sticky; z-index:30; top:0; display:flex; min-height:76px;
+      align-items:center; justify-content:space-between; padding:10px clamp(20px,5vw,76px);
+      border-bottom:1px solid rgba(222,219,234,.76); background:rgba(255,255,255,.94);
+      backdrop-filter:blur(16px);
+    }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand-mark {
+      display:grid; width:42px; height:42px; place-items:center; border-radius:12px;
+      background:linear-gradient(145deg,var(--magenta),var(--purple)); color:#fff;
+      font-size:20px; font-weight:800; box-shadow:0 8px 26px rgba(91,63,214,.24);
+    }
+    .brand strong,.brand small { display:block; }
+    .brand strong { font-size:14px; }
+    .brand small { margin-top:2px; color:var(--muted); font-size:10px; letter-spacing:.08em; text-transform:uppercase; }
+    nav { display:flex; gap:26px; align-items:center; font-size:13px; font-weight:700; }
+    nav a { padding:9px 0; border-bottom:2px solid transparent; }
+    nav a:hover,nav a:focus-visible { border-color:var(--magenta); color:var(--purple); }
+    .utility-button {
+      padding:9px 13px; border:1px solid var(--line); border-radius:10px;
+      background:#fff; color:var(--purple-dark); font-size:12px; font-weight:800;
+    }
+    .hero {
+      position:relative; display:grid; min-height:calc(100vh - 76px); align-items:center;
+      grid-template-columns:minmax(0,.82fr) minmax(500px,1.18fr); gap:clamp(38px,6vw,90px);
+      overflow:hidden; padding:62px clamp(22px,6vw,96px) 68px;
+      background:
+        radial-gradient(circle at 8% 14%,rgba(232,66,122,.12),transparent 28%),
+        radial-gradient(circle at 92% 74%,rgba(91,63,214,.12),transparent 30%),
+        linear-gradient(135deg,#fff 0%,#fbfaff 52%,#f6f2ff 100%);
+    }
+    .hero::after {
+      position:absolute; right:-140px; bottom:-190px; width:520px; height:520px;
+      border:1px solid rgba(91,63,214,.14); border-radius:50%;
+      box-shadow:0 0 0 58px rgba(91,63,214,.03),0 0 0 116px rgba(232,66,122,.02);
+      content:""; pointer-events:none;
+    }
+    .hero-copy,.builder-card { position:relative; z-index:1; }
+    .eyebrow,.mini-label {
+      margin:0 0 16px; color:var(--magenta); font-size:12px; font-weight:800; letter-spacing:.16em;
+    }
+    .hero h1 { margin:0; font-size:clamp(42px,5vw,74px); font-weight:800; letter-spacing:-.065em; line-height:1.08; }
+    .hero h1 span {
+      background:linear-gradient(90deg,var(--purple),var(--magenta)); background-clip:text; color:transparent;
+    }
+    .hero-lead { max-width:620px; margin:28px 0 34px; color:#555061; font-size:clamp(17px,1.45vw,21px); line-height:1.75; }
+    .hero-stats { display:grid; max-width:560px; grid-template-columns:repeat(4,1fr); border-block:1px solid var(--line); }
+    .hero-stats div { padding:16px 12px 15px 0; }
+    .hero-stats strong,.hero-stats span { display:block; }
+    .hero-stats strong { color:var(--purple-dark); font-size:24px; }
+    .hero-stats span { color:var(--muted); font-size:12px; }
+    .builder-card {
+      padding:clamp(27px,3vw,42px); border:1px solid rgba(91,63,214,.13); border-radius:30px;
+      background:rgba(255,255,255,.95); box-shadow:var(--shadow);
+    }
+    .builder-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:26px; }
+    .builder-heading h2 { margin:0; color:var(--purple-dark); font-size:clamp(24px,2.1vw,34px); letter-spacing:-.04em; }
+    .builder-heading .mini-label { margin-bottom:6px; }
+    .badge { flex:none; padding:7px 11px; border-radius:999px; background:var(--purple-soft); color:var(--purple); font-size:11px; font-weight:800; }
+    .field-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .field { display:grid; gap:8px; }
+    .field span { color:#504b5b; font-size:13px; font-weight:800; }
+    .field select {
+      width:100%; min-height:51px; padding:0 40px 0 14px; border:1px solid var(--line);
+      border-radius:12px; outline:none; background:#fff; color:var(--ink); font-weight:700;
+    }
+    .field select:focus,.search-input:focus { border-color:var(--purple); box-shadow:0 0 0 4px rgba(91,63,214,.1); }
+    .result-box {
+      display:grid; margin-top:22px; padding:18px; border-radius:16px;
+      background:linear-gradient(100deg,#302369,var(--purple)); color:#fff;
+      grid-template-columns:minmax(0,1fr) auto; gap:6px 15px;
+    }
+    .result-box span { grid-column:1/-1; color:#dcd5ff; font-size:11px; font-weight:800; letter-spacing:.09em; }
+    .result-box strong { align-self:center; overflow-wrap:anywhere; font-size:17px; line-height:1.55; }
+    .copy-button {
+      min-width:102px; padding:10px 14px; border:0; border-radius:10px;
+      background:#fff; color:var(--purple-dark); font-size:13px; font-weight:800;
+    }
+    .copy-button:hover,.copy-button:focus-visible { background:#f2efff; transform:translateY(-1px); }
+    .builder-tip { margin:14px 2px 0; color:var(--muted); font-size:12px; }
+    .section { padding:92px clamp(22px,7vw,112px); }
+    .section.soft { background:var(--soft); }
+    .section.dark {
+      background:linear-gradient(135deg,#24194f,#4e34b7); color:#fff;
+    }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:34px; }
+    .section-head h2 { margin:4px 0 0; font-size:clamp(30px,3.5vw,50px); letter-spacing:-.05em; line-height:1.15; }
+    .section-head p:not(.mini-label) { max-width:560px; margin:0; color:var(--muted); font-size:15px; }
+    .dark .section-head p:not(.mini-label) { color:#d9d3f6; }
+    .formula {
+      display:grid; grid-template-columns:repeat(4,1fr); gap:1px; overflow:hidden;
+      border:1px solid var(--line); border-radius:20px; background:var(--line);
+    }
+    .formula article { position:relative; min-height:180px; padding:28px; background:#fff; }
+    .formula b { display:block; color:var(--magenta); font-size:12px; }
+    .formula strong { display:block; margin:18px 0 8px; color:var(--purple-dark); font-size:22px; }
+    .formula span { color:var(--muted); font-size:13px; }
+    .formula article:not(:last-child)::after { position:absolute; right:-8px; top:50%; z-index:2; content:"+"; color:var(--purple); font-weight:800; }
+    .workspace {
+      display:grid; grid-template-columns:260px minmax(0,1fr); gap:28px;
+    }
+    .industry-tabs {
+      display:flex; position:sticky; top:96px; align-self:start; flex-direction:column; gap:7px;
+      max-height:calc(100vh - 120px); overflow:auto; padding:12px; border:1px solid var(--line);
+      border-radius:18px; background:#fff;
+    }
+    .industry-tab {
+      display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%;
+      padding:12px 14px; border:0; border-radius:10px; background:transparent; color:#56515f;
+      text-align:left; font-size:13px; font-weight:800;
+    }
+    .industry-tab span { color:#9a95a5; font-size:11px; }
+    .industry-tab:hover,.industry-tab:focus-visible { background:var(--soft); color:var(--purple); }
+    .industry-tab.active { background:var(--purple); color:#fff; box-shadow:0 8px 24px rgba(91,63,214,.2); }
+    .industry-tab.active span { color:#ddd7ff; }
+    .industry-panel {
+      overflow:hidden; border:1px solid var(--line); border-radius:24px; background:#fff; box-shadow:0 16px 50px rgba(47,38,81,.07);
+    }
+    .panel-intro { padding:30px 32px 25px; background:linear-gradient(125deg,#fff,#f5f1ff); border-bottom:1px solid var(--line); }
+    .panel-intro .mini-label { margin-bottom:7px; }
+    .panel-intro h3 { margin:0; color:var(--purple-dark); font-size:clamp(25px,3vw,38px); letter-spacing:-.04em; }
+    .panel-intro p { margin:12px 0 0; color:var(--muted); font-size:14px; }
+    .keyword-list { padding:12px 32px 28px; }
+    .keyword-row {
+      display:grid; grid-template-columns:52px minmax(150px,.8fr) minmax(260px,1.5fr) 84px 72px 42px;
+      align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid #ece9f2;
+    }
+    .keyword-row:last-child { border-bottom:0; }
+    .rank { color:var(--magenta); font-size:13px; font-weight:800; }
+    .deliverable { font-size:14px; font-weight:800; }
+    .keyword { color:var(--purple-dark); font-size:14px; font-weight:800; overflow-wrap:anywhere; }
+    .goal { justify-self:start; padding:5px 9px; border-radius:999px; background:var(--purple-soft); color:var(--purple); font-size:10px; font-weight:800; }
+    .small-copy,.favorite {
+      min-height:36px; border:1px solid var(--line); border-radius:9px; background:#fff; color:#544d66; font-size:11px; font-weight:800;
+    }
+    .small-copy:hover,.small-copy:focus-visible,.favorite:hover,.favorite:focus-visible { border-color:var(--purple); color:var(--purple); }
+    .favorite { width:38px; font-size:17px; }
+    .favorite.saved { border-color:#f2b8ca; background:#fff0f5; color:var(--magenta); }
+    .panel-tip { margin:0 32px 30px; padding:16px 18px; border-left:4px solid var(--magenta); background:#f6f2ff; color:#4f4960; font-size:13px; }
+    .search-bar { display:flex; gap:12px; margin-bottom:24px; }
+    .search-input {
+      flex:1; min-height:54px; padding:0 18px; border:1px solid var(--line); border-radius:13px; outline:none; background:#fff;
+    }
+    .filter-select { min-width:180px; padding:0 14px; border:1px solid var(--line); border-radius:13px; background:#fff; }
+    .recipe-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .recipe-card {
+      display:flex; min-height:190px; flex-direction:column; justify-content:space-between;
+      padding:23px; border:1px solid var(--line); border-radius:18px; background:#fff;
+      transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+    }
+    .recipe-card:hover { transform:translateY(-3px); border-color:#cfc5fb; box-shadow:0 16px 36px rgba(72,52,145,.1); }
+    .recipe-meta { display:flex; justify-content:space-between; color:var(--muted); font-size:11px; font-weight:800; }
+    .recipe-card h3 { margin:16px 0 9px; color:var(--purple-dark); font-size:18px; }
+    .recipe-card code { color:#4e4661; font-family:inherit; font-size:13px; line-height:1.65; overflow-wrap:anywhere; }
+    .card-actions { display:flex; gap:8px; margin-top:18px; }
+    .card-actions button { flex:1; padding:9px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--purple); font-size:11px; font-weight:800; }
+    .favorites-empty { padding:36px; border:1px dashed #cfc8dc; border-radius:16px; color:var(--muted); text-align:center; }
+    .glossary-tabs { display:flex; gap:8px; margin-bottom:18px; }
+    .glossary-tabs button { padding:10px 16px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:12px; font-weight:800; }
+    .glossary-tabs button.active { border-color:var(--purple); background:var(--purple); color:#fff; }
+    .glossary-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+    .glossary-item { padding:18px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .glossary-item b { display:block; color:#45404d; font-size:12px; }
+    .glossary-item span { display:block; margin-top:6px; color:var(--purple); font-size:13px; font-weight:800; overflow-wrap:anywhere; }
+    .checklist { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; counter-reset:steps; }
+    .check-item { position:relative; min-height:190px; padding:56px 20px 22px; border:1px solid rgba(255,255,255,.2); border-radius:18px; background:rgba(255,255,255,.08); }
+    .check-item::before {
+      position:absolute; top:18px; left:20px; display:grid; width:28px; height:28px; place-items:center;
+      border-radius:50%; background:#fff; color:var(--purple); counter-increment:steps; content:counter(steps); font-size:12px; font-weight:800;
+    }
+    .check-item strong { display:block; margin-bottom:8px; }
+    .check-item span { color:#d9d3f6; font-size:12px; }
+    details { border-bottom:1px solid var(--line); }
+    summary { display:flex; align-items:center; justify-content:space-between; padding:18px 4px; cursor:pointer; color:var(--purple-dark); font-size:14px; font-weight:800; }
+    summary::after { content:"+"; color:var(--magenta); font-size:20px; }
+    details[open] summary::after { content:"−"; }
+    details p { margin:0 4px 18px; color:var(--muted); font-size:13px; }
+    .source-list { display:grid; grid-template-columns:repeat(2,1fr); gap:10px 30px; }
+    .source-list a { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); color:#514a63; font-size:13px; font-weight:700; }
+    .source-list a::after { content:"↗"; color:var(--magenta); }
+    .source-list a:hover,.source-list a:focus-visible { color:var(--purple); }
+    footer { padding:34px clamp(22px,7vw,112px); border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
+    .toast {
+      position:fixed; z-index:100; right:24px; bottom:24px; padding:13px 18px; border-radius:12px;
+      background:#211943; color:#fff; box-shadow:var(--shadow); opacity:0; transform:translateY(12px); pointer-events:none;
+      transition:.2s ease;
+    }
+    .toast.show { opacity:1; transform:translateY(0); }
+    .hide { display:none!important; }
+    :focus-visible { outline:3px solid rgba(91,63,214,.26); outline-offset:3px; }
+    @media (max-width:1050px) {
+      .hero { min-height:auto; grid-template-columns:1fr; }
+      .builder-card { max-width:820px; }
+      .formula { grid-template-columns:repeat(2,1fr); }
+      .workspace { grid-template-columns:1fr; }
+      .industry-tabs { position:static; flex-direction:row; overflow:auto; border:0; padding:0 0 8px; }
+      .industry-tab { flex:0 0 auto; width:auto; }
+      .recipe-grid { grid-template-columns:repeat(2,1fr); }
+      .glossary-grid { grid-template-columns:repeat(3,1fr); }
+      .checklist { grid-template-columns:repeat(3,1fr); }
+    }
+    @media (max-width:720px) {
+      .topbar { position:relative; }
+      nav a { display:none; }
+      nav .utility-button { display:block; }
+      .hero { padding:52px 20px; gap:42px; }
+      .hero h1 { font-size:clamp(39px,12vw,57px); }
+      .hero-stats { grid-template-columns:repeat(2,1fr); }
+      .field-grid,.source-list { grid-template-columns:1fr; }
+      .builder-card { padding:24px 18px; border-radius:23px; }
+      .result-box { grid-template-columns:1fr; }
+      .section { padding:66px 20px; }
+      .section-head { align-items:flex-start; flex-direction:column; }
+      .formula,.recipe-grid,.glossary-grid,.checklist { grid-template-columns:1fr; }
+      .formula article:not(:last-child)::after { display:none; }
+      .panel-intro,.keyword-list { padding-inline:20px; }
+      .keyword-row { grid-template-columns:35px minmax(0,1fr) 42px; gap:9px; }
+      .keyword-row .deliverable { grid-column:2; }
+      .keyword-row .keyword { grid-column:2; }
+      .keyword-row .goal { display:none; }
+      .keyword-row .small-copy { grid-column:3; grid-row:1/3; font-size:0; }
+      .keyword-row .small-copy::after { content:"복사"; font-size:10px; }
+      .favorite { grid-column:3; grid-row:2; }
+      .panel-tip { margin-inline:20px; }
+      .search-bar { flex-direction:column; }
+      .filter-select { min-height:50px; }
+    }
+    @media print {
+      .topbar,.builder-card,.search-bar,.glossary-tabs,.card-actions,.small-copy,.favorite,.toast { display:none!important; }
+      .hero { min-height:auto; display:block; padding:40px; }
+      .section { padding:40px; break-inside:avoid; }
+      .industry-tabs { display:none; }
+      .workspace { grid-template-columns:1fr; }
+      .recipe-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none!important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 이동</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="처음으로 이동">
+      <span class="brand-mark">K</span>
+      <span><strong>Template Keyword Guide</strong><small>Adobe Express × Small Business</small></span>
+    </a>
+    <nav aria-label="주요 메뉴">
+      <a href="#builder">검색어 만들기</a><a href="#industry-guide">업종별 가이드</a><a href="#recipes">완성 예시</a>
+      <button class="utility-button" type="button" onclick="window.print()">인쇄·PDF</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">INTERACTIVE HTML5 · 2026</p>
+        <h1>소상공인을 위한<br><span>템플릿 검색 키워드</span></h1>
+        <p class="hero-lead">내 업종과 목적을 선택하면 Adobe Express에서 바로 검색할 수 있는 영문 키워드가 자동으로 완성됩니다.</p>
+        <div class="hero-stats" aria-label="가이드 구성">
+          <div><strong>12</strong><span>업종</span></div><div><strong>60</strong><span>추천 검색어</span></div>
+          <div><strong>18</strong><span>완성 예시</span></div><div><strong>14</strong><span>공식 출처</span></div>
+        </div>
+      </div>
+      <div class="builder-card" id="builder">
+        <div class="builder-heading">
+          <div><p class="mini-label">SEARCH FORMULA</p><h2>나만의 검색어 만들기</h2></div><span class="badge">4단계</span>
+        </div>
+        <div class="field-grid">
+          <label class="field"><span>1. 업종</span><select id="industry-select"></select></label>
+          <label class="field"><span>2. 목적</span><select id="purpose-select"></select></label>
+          <label class="field"><span>3. 형식</span><select id="format-select"></select></label>
+          <label class="field"><span>4. 스타일</span><select id="style-select"></select></label>
+        </div>
+        <div class="result-box" aria-live="polite">
+          <span>완성된 검색어</span><strong id="query-output"></strong>
+          <button class="copy-button" type="button" data-copy-target="query-output">검색어 복사</button>
+        </div>
+        <p class="builder-tip">TIP · 검색 결과가 너무 많으면 스타일을 추가하고, 너무 적으면 스타일을 제외하세요.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="formula-title">
+      <div class="section-head">
+        <div><p class="mini-label">10-SECOND CHECK</p><h2 id="formula-title">검색 공식은 네 단어면 충분합니다</h2></div>
+        <p>영문 키워드는 디자인 양식을 빠르게 좁히는 도구입니다. 업종 → 목적 → 형식 → 스타일 순으로 조합하세요.</p>
+      </div>
+      <div class="formula">
+        <article><b>01</b><strong>업종</strong><span>cafe · salon · academy</span></article>
+        <article><b>02</b><strong>목적</strong><span>new menu · booking · sale</span></article>
+        <article><b>03</b><strong>형식</strong><span>post · flyer · price list</span></article>
+        <article><b>04</b><strong>스타일</strong><span>minimal · warm · premium</span></article>
+      </div>
+    </section>
+
+    <section class="section soft" id="industry-guide" aria-labelledby="industry-title">
+      <div class="section-head">
+        <div><p class="mini-label">60 COPY-READY KEYWORDS</p><h2 id="industry-title">업종별 추천 검색어</h2></div>
+        <p>업종을 선택하고 필요한 키워드를 복사하세요. 별표를 누르면 이 브라우저에 즐겨찾기로 보관됩니다.</p>
+      </div>
+      <div class="workspace">
+        <div class="industry-tabs" id="industry-tabs" role="tablist" aria-label="업종 선택"></div>
+        <div class="industry-panel" id="industry-panel" role="tabpanel"></div>
+      </div>
+    </section>
+
+    <section class="section" id="recipes" aria-labelledby="recipe-title">
+      <div class="section-head">
+        <div><p class="mini-label">18 COMPLETE QUERIES</p><h2 id="recipe-title">오늘 바로 쓰는 완성 검색어</h2></div>
+        <p>업종이나 제작 목적을 검색하고, 원하는 문장을 바로 복사할 수 있습니다.</p>
+      </div>
+      <div class="search-bar">
+        <input class="search-input" id="recipe-search" type="search" placeholder="예: 카페, 할인, 가격표, minimal" aria-label="완성 검색어 찾기">
+        <select class="filter-select" id="recipe-filter" aria-label="업종별 필터">
+          <option value="all">전체 업종</option>
+        </select>
+      </div>
+      <div class="recipe-grid" id="recipe-grid"></div>
+    </section>
+
+    <section class="section soft" id="favorites" aria-labelledby="favorite-title">
+      <div class="section-head">
+        <div><p class="mini-label">MY KEYWORDS</p><h2 id="favorite-title">내 즐겨찾기</h2></div>
+        <p>별표로 저장한 키워드는 같은 브라우저에서 다시 열어도 유지됩니다.</p>
+      </div>
+      <div class="recipe-grid" id="favorite-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="glossary-title">
+      <div class="section-head">
+        <div><p class="mini-label">PURPOSE + STYLE</p><h2 id="glossary-title">목적·스타일 단어 사전</h2></div>
+        <p>필요한 단어를 클릭하면 자동으로 복사됩니다.</p>
+      </div>
+      <div class="glossary-tabs" role="tablist">
+        <button class="active" type="button" data-glossary="common">공통 형식 20</button>
+        <button type="button" data-glossary="purpose">목적 단어 10</button>
+        <button type="button" data-glossary="style">스타일 단어 10</button>
+      </div>
+      <div class="glossary-grid" id="glossary-grid"></div>
+    </section>
+
+    <section class="section dark" aria-labelledby="workflow-title">
+      <div class="section-head">
+        <div><p class="mini-label">WORKFLOW + RIGHTS</p><h2 id="workflow-title">선택한 템플릿을 완성하는 5단계</h2></div>
+        <p>검색어를 찾은 뒤에는 목적·문구·이미지·비율·권리를 순서대로 확인하세요.</p>
+      </div>
+      <div class="checklist">
+        <article class="check-item"><strong>템플릿 선택</strong><span>목적·형식·사진 영역이 내 콘텐츠와 맞는지 확인합니다.</span></article>
+        <article class="check-item"><strong>문구 정리</strong><span>제목·혜택·행동 유도 문구를 3줄 안으로 정리합니다.</span></article>
+        <article class="check-item"><strong>이미지 보완</strong><span>상품 이미지·배경·색조를 브랜드 톤에 맞춥니다.</span></article>
+        <article class="check-item"><strong>크기 확인</strong><span>게시 채널에 맞게 정사각형·세로형·가로형을 선택합니다.</span></article>
+        <article class="check-item"><strong>권리 확인</strong><span>무료·유료 자산, 로고, 인물, 음악의 사용 조건을 확인합니다.</span></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="section-head"><div><p class="mini-label">QUICK HELP</p><h2 id="faq-title">검색이 잘 안 될 때</h2></div></div>
+      <details><summary>검색 결과가 너무 많습니다</summary><p>형식 또는 목적을 하나 더 넣으세요. 예: cafe → cafe menu → cafe new menu instagram post.</p></details>
+      <details><summary>검색 결과가 너무 적습니다</summary><p>마지막 스타일 단어를 빼고, 업종의 유사어를 바꿔보세요. 예: cafe ↔ coffee shop, salon ↔ beauty salon.</p></details>
+      <details><summary>사진 중심 템플릿만 찾고 싶습니다</summary><p>검색어 끝에 photo, product, menu를 추가하면 사진 영역이 큰 결과를 찾는 데 도움이 됩니다.</p></details>
+      <details><summary>영상 템플릿만 찾고 싶습니다</summary><p>reel, short video, promo video를 형식 단어로 사용하세요.</p></details>
+    </section>
+
+    <section class="section soft" id="sources" aria-labelledby="source-title">
+      <div class="section-head">
+        <div><p class="mini-label">OFFICIAL SOURCES</p><h2 id="source-title">Adobe 공식 출처</h2></div>
+        <p>기능과 라이선스는 변경될 수 있으므로 실제 사용 전 공식 페이지에서 최신 조건을 확인하세요.</p>
+      </div>
+      <div class="source-list" id="source-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>소상공인 업종별 템플릿 검색 키워드 가이드 2026</strong><br>
+    TOP 1–5는 검색량 통계가 아니라 소상공인 실무 활용도와 제작 흐름을 기준으로 정리한 우선순위입니다.
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">복사했습니다.</div>
+
+  <script>
+    const builderData = {
+      industries:[["카페","cafe"],["음식점","restaurant"],["미용실","beauty salon"],["공방","handmade"],["학원","education"],["쇼핑몰","online shop"],["꽃집","flower shop"],["패션·의류","fashion"],["필라테스·피트니스","fitness"],["숙박·여행","hotel"],["반려동물","pet care"],["지역·전문 서비스","local business"]],
+      purposes:[["신제품","new product"],["할인","sale"],["예약","appointment"],["모집","enrollment"],["신규 오픈","grand opening"],["후기","testimonial"],["감사","thank you"],["재방문","loyalty"],["기간 한정","limited time"],["조기 신청","early bird"]],
+      formats:[["인스타그램 게시물","instagram post"],["인스타그램 스토리","instagram story"],["전단","flyer"],["포스터","poster"],["메뉴판","menu"],["가격표","price list"],["배너","banner"],["브로슈어","brochure"],["짧은 영상","short video"],["카드","card"]],
+      styles:[["미니멀","minimal"],["현대적","modern"],["고급","premium"],["따뜻한","warm"],["자연스러운","natural"],["편집디자인","editorial"],["대담한","bold"],["경쾌한","playful"],["파스텔","pastel"],["소박한","rustic"]]
+    };
+    const industries = [
+      {name:"카페",title:"신메뉴에서 재방문까지",flow:"신메뉴 → 주문 → 시즌 주목 → 방문 → 재방문",tip:"메뉴를 먼저 만든 뒤 같은 사진과 색으로 피드·스토리·스탬프 카드를 확장하세요.",rows:[["신메뉴 홍보 카드","coffee shop new menu instagram post","판매"],["카페 메뉴판","cafe menu","주문"],["시즌 음료 프로모션","seasonal drink promotion","주목"],["오픈 이벤트 전단","coffee shop grand opening flyer","방문"],["스탬프·멤버십","cafe loyalty punch card","재방문"]]},
+      {name:"음식점",title:"메뉴 선택과 주문을 빠르게",flow:"주문 → 유입 → 방문 → 배달 주문 → 신뢰",tip:"대표 메뉴 사진을 중심에 두고 메뉴판 → SNS → 이벤트 순으로 변형하세요.",rows:[["음식점 메뉴판","restaurant menu","주문"],["대표 메뉴 SNS","food instagram post","유입"],["할인·이벤트 전단","restaurant promotion flyer","방문"],["배달 메뉴 홍보","food delivery instagram post","주문"],["고객 후기 카드","restaurant customer testimonial post","신뢰"]]},
+      {name:"미용실",title:"가격·결과·예약을 한눈에",flow:"문의 감소 → 예약 → 결과 증명 → 신규 방문 → 재방문",tip:"가격표로 문의를 줄이고, 전후 비교 카드는 동일한 각도와 조명으로 정리하세요.",rows:[["가격표","beauty salon price list","문의"],["시술 프로모션","hair salon promotion instagram post","예약"],["전후 비교 카드","beauty before and after instagram post","신뢰"],["신규 오픈 전단","beauty salon grand opening flyer","방문"],["예약 안내 카드","salon appointment reminder card","재방문"]]},
+      {name:"공방",title:"클래스 모집과 상품 판매를 분리",flow:"모집 → 판매 → 방문 → 브랜드 → 재구매",tip:"클래스 모집과 상품 판매를 따로 검색하면 목적에 맞는 구성을 더 빨리 찾을 수 있습니다.",rows:[["클래스 모집","pottery class flyer","모집"],["핸드메이드 상품 홍보","handmade product instagram post","판매"],["플리마켓 포스터","handmade market poster","방문"],["브랜드 소개 카드","handmade brand story instagram post","브랜딩"],["주문 감사 카드","thank you for your order card handmade","재구매"]]},
+      {name:"학원",title:"모집과 운영 정보를 명확하게",flow:"모집 → 강좌 안내 → 일정 → 신청 → 신뢰",tip:"모집·일정·특강을 각각 검색한 뒤 같은 색과 제목 체계로 묶으세요.",rows:[["수강생 모집","class enrollment poster","모집"],["강좌 안내 전단","education course flyer","안내"],["수업 일정표","class schedule","운영"],["특강 SNS 카드","workshop instagram post","신청"],["학원 소개 브로슈어","education brochure","신뢰"]]},
+      {name:"쇼핑몰",title:"상품 발견에서 재구매까지",flow:"판매 → 주목 → 전환 → 신뢰 → 재구매",tip:"상품 출시 → 할인 → 후기 → 쿠폰의 흐름으로 하나의 캠페인 세트를 만드세요.",rows:[["상품 할인 카드","product sale instagram post","판매"],["신상품 출시","product launch instagram post","주목"],["상세페이지 배너","ecommerce product banner","전환"],["고객 후기 카드","product testimonial instagram post","신뢰"],["감사·쿠폰 카드","thank you for your order coupon card","재구매"]]},
+      {name:"꽃집",title:"행사와 계절 수요를 빠르게",flow:"홍보 → 가격 → 클래스 → 배송 → 오픈",tip:"꽃다발·클래스·배송처럼 구매 상황을 먼저 정하면 결과를 빠르게 좁힐 수 있습니다.",rows:[["꽃집 프로모션","flower shop promotion instagram post","홍보"],["꽃다발 가격표","bouquet price list","판매"],["플라워 클래스","flower workshop flyer","모집"],["꽃 배송 안내","flower delivery social media post","주문"],["신규 오픈","flower shop grand opening flyer","방문"]]},
+      {name:"패션·의류",title:"신상품과 스타일 제안을 분리",flow:"할인 → 신상품 → 방문 → 판매 → 스타일",tip:"상품 배너와 스타일 가이드를 분리하면 판매용과 브랜딩용 결과를 구분할 수 있습니다.",rows:[["시즌 할인","fashion sale instagram post","판매"],["신규 컬렉션","new collection lookbook","주목"],["매장 프로모션","clothing store promotion flyer","방문"],["상품 배너","fashion product banner","전환"],["스타일 가이드","style guide social media post","브랜딩"]]},
+      {name:"필라테스·피트니스",title:"클래스·멤버십·후기를 연결",flow:"홍보 → 멤버십 → 일정 → 후기 → 참여",tip:"수업 모집과 멤버십 판매를 분리하고 후기 카드로 신뢰를 보완하세요.",rows:[["수업 프로모션","pilates class promotion","홍보"],["멤버십 전단","fitness membership flyer","판매"],["수업 시간표","fitness class schedule","운영"],["고객 후기","client testimonial fitness post","신뢰"],["웰니스 챌린지","wellness challenge instagram post","참여"]]},
+      {name:"숙박·여행",title:"가격·후기·지역 정보를 한 번에",flow:"홍보 → 가격 → 패키지 → 후기 → 안내",tip:"객실 판매 자료와 지역 가이드를 나누면 예약 전후 고객 경험을 연결할 수 있습니다.",rows:[["호텔 프로모션","hotel promotion instagram post","홍보"],["객실 가격표","room rate price list","판매"],["여행 패키지","travel package flyer","예약"],["고객 후기","guest review testimonial post","신뢰"],["지역 여행 가이드","local travel guide brochure","안내"]]},
+      {name:"반려동물",title:"서비스 가격과 예약을 명확하게",flow:"가격 → 홍보 → 서비스 → 정보 → 예약",tip:"미용·돌봄·예약을 각각 검색하면 전문 서비스별 자료를 쉽게 만들 수 있습니다.",rows:[["미용 가격표","pet grooming price list","가격"],["펫숍 프로모션","pet shop promotion instagram post","홍보"],["돌봄 서비스","pet care service flyer","판매"],["반려동물 팁","pet care tips instagram post","정보"],["예약 안내","pet appointment reminder","예약"]]},
+      {name:"지역·전문 서비스",title:"가격·예약·신뢰를 중심으로",flow:"홍보 → 가격 → 예약 → 후기 → 소개",tip:"업종이 세부적일수록 서비스명과 지역명을 추가해 결과를 좁히세요.",rows:[["지역 사업 전단","local business flyer","홍보"],["서비스 가격표","service price list","가격"],["예약 알림","appointment reminder card","예약"],["고객 후기","client testimonial social post","신뢰"],["사업 소개서","small business brochure","소개"]]}
+    ];
+    const recipes = [
+      ["카페","말차라떼 신메뉴","matcha latte new menu instagram post minimal"],["카페","여름 시즌 음료","coffee shop summer drink promotion story"],["카페","스탬프 카드","cafe loyalty punch card modern"],
+      ["음식점","점심 특선","restaurant lunch special promotion flyer"],["음식점","배달 메뉴","food delivery instagram post bold"],["음식점","고객 후기","restaurant customer review social post"],
+      ["미용실","가격표","hair salon price list clean modern"],["미용실","예약 알림","beauty salon appointment reminder elegant"],["미용실","시술 전후","hair treatment before and after instagram post"],
+      ["공방","원데이 클래스","pottery one day class enrollment flyer warm"],["공방","신상품 출시","handmade product launch instagram post natural"],["공방","주문 감사","thank you for your order card artisan"],
+      ["학원","여름 수강생 모집","summer class enrollment poster playful"],["학원","수업 일정","education course schedule clean"],["학원","특강 안내","special workshop instagram post modern"],
+      ["쇼핑몰","신상품 배너","new arrival product banner minimal"],["쇼핑몰","기간 한정 할인","limited time product sale instagram post bold"],["쇼핑몰","상품 후기","product testimonial social media post clean"]
+    ];
+    const glossary = {
+      common:[["SNS 게시물","social media post"],["인스타 피드","instagram post"],["인스타 스토리","instagram story"],["릴스","reel"],["짧은 영상","short video"],["메뉴판","menu"],["가격표","price list"],["상품 소개","product showcase"],["할인","sale"],["쿠폰","coupon"],["전단","flyer"],["포스터","poster"],["신규 오픈","grand opening"],["예약 안내","appointment reminder"],["이벤트","event promotion"],["고객 후기","customer testimonial"],["전후 비교","before and after"],["감사 카드","thank you card"],["멤버십","loyalty card"],["소개서","brochure"]],
+      purpose:[["신제품","new product / product launch"],["할인","sale / discount"],["예약","appointment / booking"],["모집","enrollment / registration"],["오픈","grand opening"],["후기","testimonial / review"],["감사","thank you"],["재방문","loyalty / membership"],["기간 한정","limited time"],["조기 신청","early bird"]],
+      style:[["미니멀","minimal / clean"],["현대적","modern"],["고급","luxury / premium"],["따뜻한","warm / cozy"],["자연스러운","natural / organic"],["편집디자인","editorial"],["대담한","bold"],["경쾌한","playful"],["파스텔","pastel"],["소박한","rustic"]]
+    };
+    const sources = [
+      ["템플릿 검색·필터·사용","https://helpx.adobe.com/express/web/create-with-templates/templates-in-adobe-express.html"],["카페 메뉴 템플릿","https://www.adobe.com/express/templates/menu/cafe"],["음식점 메뉴 템플릿","https://www.adobe.com/express/templates/menu/restaurant"],["가격표 템플릿","https://www.adobe.com/express/templates/list/price"],["미용실 전단 템플릿","https://www.adobe.com/express/templates/flyer/salon"],["사업 감사 카드 템플릿","https://www.adobe.com/express/templates/card/thank-you-for-your-business"],["교육 템플릿","https://www.adobe.com/express/collections/education"],["시간표 템플릿","https://www.adobe.com/express/templates/schedule/timetable"],["배너 템플릿","https://www.adobe.com/express/templates/banner"],["소상공인용 Adobe Express","https://www.adobe.com/express/solutions/small-business"],["페이지 크기 변경","https://helpx.adobe.com/express/web/arrange-layers-and-pages/change-page-size.html"],["Adobe Express 무료 플랜","https://helpx.adobe.com/express/web/adobe-express-subscription/free.html"],["Adobe Firefly FAQ","https://helpx.adobe.com/firefly/web/get-started/learn-the-basics/adobe-firefly-faq.html"],["Adobe Stock 사용·라이선스 FAQ","https://helpx.adobe.com/stock/help/usage-licensing.html"]
+    ];
+    let activeIndustry = 0;
+    let favorites = [];
+    try { favorites = JSON.parse(localStorage.getItem("template-keyword-favorites") || "[]"); } catch(e) { favorites = []; }
+    const byId = id => document.getElementById(id);
+    function escapeHTML(value) { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])); }
+    function toast(message) {
+      const el=byId("toast"); el.textContent=message; el.classList.add("show");
+      clearTimeout(window.toastTimer); window.toastTimer=setTimeout(()=>el.classList.remove("show"),1500);
+    }
+    async function copyText(text) {
+      try { await navigator.clipboard.writeText(text); }
+      catch(e) { const t=document.createElement("textarea"); t.value=text; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); }
+      toast("검색어를 복사했습니다.");
+    }
+    function fillSelect(id, data) {
+      byId(id).innerHTML=data.map(([label,value])=>`<option value="${escapeHTML(value)}">${escapeHTML(label)}</option>`).join("");
+    }
+    function updateBuilder() {
+      byId("query-output").textContent=["industry-select","purpose-select","format-select","style-select"].map(id=>byId(id).value).join(" ");
+    }
+    function renderIndustryTabs() {
+      byId("industry-tabs").innerHTML=industries.map((item,index)=>`<button type="button" role="tab" aria-selected="${index===activeIndustry}" class="industry-tab ${index===activeIndustry?"active":""}" data-industry="${index}">${escapeHTML(item.name)}<span>TOP 5</span></button>`).join("");
+    }
+    function isSaved(keyword) { return favorites.includes(keyword); }
+    function renderIndustry() {
+      const item=industries[activeIndustry];
+      byId("industry-panel").innerHTML=`
+        <div class="panel-intro"><p class="mini-label">INDUSTRY ${String(activeIndustry+1).padStart(2,"0")}</p><h3>${escapeHTML(item.name)} · ${escapeHTML(item.title)}</h3><p>${escapeHTML(item.flow)}</p></div>
+        <div class="keyword-list">${item.rows.map((row,index)=>`
+          <div class="keyword-row">
+            <span class="rank">0${index+1}</span><span class="deliverable">${escapeHTML(row[0])}</span>
+            <span class="keyword">${escapeHTML(row[1])}</span><span class="goal">${escapeHTML(row[2])}</span>
+            <button class="small-copy" type="button" data-copy="${escapeHTML(row[1])}">복사</button>
+            <button class="favorite ${isSaved(row[1])?"saved":""}" type="button" data-favorite="${escapeHTML(row[1])}" aria-label="${isSaved(row[1])?"즐겨찾기 해제":"즐겨찾기 추가"}">${isSaved(row[1])?"★":"☆"}</button>
+          </div>`).join("")}</div>
+        <p class="panel-tip"><strong>PRO TIP</strong> · ${escapeHTML(item.tip)}</p>`;
+    }
+    function saveFavorites() {
+      localStorage.setItem("template-keyword-favorites",JSON.stringify(favorites));
+      renderIndustry(); renderFavorites();
+    }
+    function renderRecipes() {
+      const term=byId("recipe-search").value.trim().toLowerCase(), filter=byId("recipe-filter").value;
+      const filtered=recipes.filter(row=>(filter==="all"||row[0]===filter)&&row.join(" ").toLowerCase().includes(term));
+      byId("recipe-grid").innerHTML=filtered.length?filtered.map((row,index)=>`
+        <article class="recipe-card"><div><div class="recipe-meta"><span>${escapeHTML(row[0])}</span><span>${String(index+1).padStart(2,"0")}</span></div><h3>${escapeHTML(row[1])}</h3><code>${escapeHTML(row[2])}</code></div>
+        <div class="card-actions"><button type="button" data-copy="${escapeHTML(row[2])}">복사</button><button type="button" data-favorite="${escapeHTML(row[2])}">${isSaved(row[2])?"★ 저장됨":"☆ 저장"}</button></div></article>`).join(""):`<div class="favorites-empty">조건에 맞는 검색어가 없습니다.</div>`;
+    }
+    function renderFavorites() {
+      byId("favorite-grid").innerHTML=favorites.length?favorites.map((word,index)=>`
+        <article class="recipe-card"><div><div class="recipe-meta"><span>저장한 키워드</span><span>${String(index+1).padStart(2,"0")}</span></div><h3>내 검색어</h3><code>${escapeHTML(word)}</code></div>
+        <div class="card-actions"><button type="button" data-copy="${escapeHTML(word)}">복사</button><button type="button" data-favorite="${escapeHTML(word)}">★ 삭제</button></div></article>`).join(""):`<div class="favorites-empty">업종별 추천이나 완성 검색어에서 ☆를 누르면 이곳에 저장됩니다.</div>`;
+    }
+    function renderGlossary(type) {
+      byId("glossary-grid").innerHTML=glossary[type].map(row=>`<button class="glossary-item" type="button" data-copy="${escapeHTML(row[1])}"><b>${escapeHTML(row[0])}</b><span>${escapeHTML(row[1])}</span></button>`).join("");
+    }
+    function init() {
+      fillSelect("industry-select",builderData.industries); fillSelect("purpose-select",builderData.purposes);
+      fillSelect("format-select",builderData.formats); fillSelect("style-select",builderData.styles);
+      ["industry-select","purpose-select","format-select","style-select"].forEach(id=>byId(id).addEventListener("change",updateBuilder));
+      updateBuilder(); renderIndustryTabs(); renderIndustry();
+      [...new Set(recipes.map(row=>row[0]))].forEach(name=>byId("recipe-filter").insertAdjacentHTML("beforeend",`<option value="${escapeHTML(name)}">${escapeHTML(name)}</option>`));
+      byId("recipe-search").addEventListener("input",renderRecipes); byId("recipe-filter").addEventListener("change",renderRecipes);
+      renderRecipes(); renderFavorites(); renderGlossary("common");
+      byId("source-list").innerHTML=sources.map(row=>`<a href="${row[1]}" target="_blank" rel="noopener noreferrer">${escapeHTML(row[0])}</a>`).join("");
+      document.addEventListener("click",event=>{
+        const copy=event.target.closest("[data-copy]"); if(copy) copyText(copy.dataset.copy);
+        const target=event.target.closest("[data-copy-target]"); if(target) copyText(byId(target.dataset.copyTarget).textContent.trim());
+        const fav=event.target.closest("[data-favorite]"); if(fav){ const word=fav.dataset.favorite; favorites=isSaved(word)?favorites.filter(x=>x!==word):[...favorites,word]; saveFavorites(); renderRecipes(); toast(isSaved(word)?"즐겨찾기에 저장했습니다.":"즐겨찾기에서 삭제했습니다."); }
+        const tab=event.target.closest("[data-industry]"); if(tab){ activeIndustry=Number(tab.dataset.industry); renderIndustryTabs(); renderIndustry(); }
+        const glossaryTab=event.target.closest("[data-glossary]"); if(glossaryTab){ document.querySelectorAll("[data-glossary]").forEach(el=>el.classList.toggle("active",el===glossaryTab)); renderGlossary(glossaryTab.dataset.glossary); }
+      });
+    }
+    init();
+  </script>
+</body>
+</html>
