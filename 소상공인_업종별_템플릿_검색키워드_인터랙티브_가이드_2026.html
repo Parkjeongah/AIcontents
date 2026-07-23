@@ -273,6 +273,7 @@
     <nav aria-label="주요 메뉴">
       <a href="#builder">검색어 만들기</a><a href="#industry-guide">업종별 가이드</a><a href="#recipes">완성 예시</a>
       <button class="utility-button" type="button" onclick="window.print()">인쇄·PDF</button>
+      <button class="utility-button" type="button" onclick="openQRWindow()">강의용 QR</button>
     </nav>
   </header>
 
@@ -451,6 +452,30 @@
       try { await navigator.clipboard.writeText(text); }
       catch(e) { const t=document.createElement("textarea"); t.value=text; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); }
       toast("검색어를 복사했습니다.");
+    }
+    function openQRWindow() {
+      const pageUrl = "https://parkjeongah.github.io/AIcontents/" + encodeURIComponent("소상공인_업종별_템플릿_검색키워드_인터랙티브_가이드_2026.html");
+      const qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=480x480&margin=12&data=" + encodeURIComponent(pageUrl);
+      const win = window.open("", "guide-qr", "width=560,height=760");
+      if (!win) { toast("팝업이 차단되었습니다. 팝업 허용 후 다시 시도해 주세요."); return; }
+      win.document.write(`<!doctype html><html lang="ko"><head><meta charset="utf-8">
+        <title>강의용 QR 코드</title>
+        <style>
+          body{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;
+            background:linear-gradient(135deg,#24194f,#4e34b7);color:#fff;font-family:Arial,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;text-align:center;padding:32px;box-sizing:border-box;}
+          h1{margin:0 0 22px;font-size:22px;letter-spacing:-.03em;}
+          .qr-box{padding:20px;background:#fff;border-radius:20px;box-shadow:0 22px 60px rgba(0,0,0,.28);}
+          img{display:block;width:min(70vw,420px);height:auto;}
+          p{margin:22px 0 0;font-size:13px;color:#d9d3f6;word-break:break-all;max-width:480px;}
+          button{margin-top:18px;padding:10px 16px;border:0;border-radius:10px;background:#fff;color:#3f317d;font-weight:800;font-size:13px;cursor:pointer;}
+        </style></head>
+        <body>
+          <h1>휴대폰 카메라로 QR 코드를 스캔하세요</h1>
+          <div class="qr-box"><img src="${qrSrc}" alt="가이드 페이지 QR 코드"></div>
+          <p>${pageUrl}</p>
+          <button type="button" onclick="window.close()">닫기</button>
+        </body></html>`);
+      win.document.close();
     }
     function fillSelect(id, data) {
       byId(id).innerHTML=data.map(([label,value])=>`<option value="${escapeHTML(value)}">${escapeHTML(label)}</option>`).join("");

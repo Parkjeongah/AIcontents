@@ -252,6 +252,7 @@ nav.links a.active::after{width:100%}
 .meta-thumb img{display:block;width:100%;height:auto}
 .meta-thumb:hover{border-color:var(--accent);transform:translateY(-2px)}
 .work-item .tag-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.work-item .tag-group{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
 
 /* ---------- AI Glasses gallery ---------- */
 .glass-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,32px);margin-top:2.8rem;counter-reset:glass}
@@ -389,6 +390,7 @@ body.pdf-modal-active{overflow:hidden}
   .expertise-grid{grid-template-columns:1fr}
   .work-item{grid-template-columns:44px 1fr;gap:16px}
   .work-item .tag{grid-column:2;justify-self:start}
+  .work-item .tag-group{grid-column:2;justify-self:start;justify-content:flex-start}
   .glass-gallery{grid-template-columns:1fr}
   nav.links{
     position:fixed;inset:0 0 0 auto;width:min(78vw,320px);

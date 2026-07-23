@@ -136,4 +136,32 @@
   document.addEventListener("keydown", function(e){
     if(e.key === "Escape" && pdfModal.classList.contains("open")){ closePdfModal(); }
   });
+
+  /* ----- Lecture archive QR popup ----- */
+  function openQR(url, title){
+    var qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=480x480&margin=12&data=" + encodeURIComponent(url);
+    var win = window.open("", "lecture-qr", "width=560,height=760");
+    if(!win){ return; }
+    win.document.write(
+      '<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>' + (title || "QR 코드") + '</title>' +
+      '<style>' +
+      'body{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;' +
+      'background:#0B172E;color:#F3EEE2;font-family:"Noto Sans KR",system-ui,sans-serif;text-align:center;padding:32px;box-sizing:border-box;}' +
+      'h1{margin:0 0 26px;max-width:400px;font-size:1.2rem;font-weight:400;letter-spacing:-.01em;}' +
+      '.qr-box{padding:20px;background:#FBF8F0;border-radius:16px;box-shadow:0 22px 60px rgba(0,0,0,.4);}' +
+      'img{display:block;width:min(70vw,420px);height:auto;}' +
+      'button{margin-top:26px;padding:10px 18px;border:1px solid #C8A24B;border-radius:100px;background:none;color:#F3EEE2;font-size:.82rem;cursor:pointer;}' +
+      '</style></head><body>' +
+      '<h1>' + (title || "QR 코드를 스캔하세요") + '</h1>' +
+      '<div class="qr-box"><img src="' + qrSrc + '" alt="QR 코드"></div>' +
+      '<button type="button" onclick="window.close()">닫기</button>' +
+      '</body></html>'
+    );
+    win.document.close();
+  }
+  document.querySelectorAll("[data-qr-open]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      openQR(btn.getAttribute("data-qr-open"), btn.getAttribute("data-qr-title"));
+    });
+  });
 })();
