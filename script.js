@@ -150,10 +150,13 @@
       'h1{margin:0 0 26px;max-width:400px;font-size:1.2rem;font-weight:400;letter-spacing:-.01em;}' +
       '.qr-box{padding:20px;background:#FBF8F0;border-radius:16px;box-shadow:0 22px 60px rgba(0,0,0,.4);}' +
       'img{display:block;width:min(70vw,420px);height:auto;}' +
-      'button{margin-top:26px;padding:10px 18px;border:1px solid #C8A24B;border-radius:100px;background:none;color:#F3EEE2;font-size:.82rem;cursor:pointer;}' +
+      '.qr-box a{display:block;cursor:pointer;}' +
+      'p{margin:14px 0 0;font-size:.78rem;color:#B9BFCE;}' +
+      'button{margin-top:20px;padding:10px 18px;border:1px solid #C8A24B;border-radius:100px;background:none;color:#F3EEE2;font-size:.82rem;cursor:pointer;}' +
       '</style></head><body>' +
       '<h1>' + (title || "QR 코드를 스캔하세요") + '</h1>' +
-      '<div class="qr-box"><img src="' + qrSrc + '" alt="QR 코드"></div>' +
+      '<div class="qr-box"><a href="' + url + '" target="_blank" rel="noopener"><img src="' + qrSrc + '" alt="QR 코드"></a></div>' +
+      '<p>PC에서는 QR 이미지를 클릭해도 바로 이동합니다.</p>' +
       '<button type="button" onclick="window.close()">닫기</button>' +
       '</body></html>'
     );
